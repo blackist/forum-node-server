@@ -1,0 +1,18 @@
+{
+  "name": "smarthome-forum-server",
+  "version": "1.0.0",
+  "description": "智能家居论坛项目服务端",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@10.11.246.32:smarthome-forum-server.git"
+  },
+  "author": "LiangLiang.Dong",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.5.2"
+  }
+}
