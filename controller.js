@@ -11,7 +11,6 @@ function addRouter(router, dir) {
     for(var f of js_files) {
         console.log('controller ' + "/" + dir + "/" + f);
         let mapping = require(__dirname + "/" + dir + "/" + f);
-        console.log(mapping);
         addMapping(router, mapping);
     }
 }
@@ -28,11 +27,11 @@ function addMapping(router, mapping) {
             console.log('register POST ' + path);
         } else if(url.startsWith('PUT')) {
             var path = url.substring(4);
-            router.post(path, mapping[url]);
+            router.put(path, mapping[url]);
             console.log('register PUT ' + path);
         } else if(url.startsWith('DELETE')) {
             var path = url.substring(7);
-            router.post(path, mapping[url]);
+            router.delete(path, mapping[url]);
             console.log('register DELETE ' + path);
         }
     }

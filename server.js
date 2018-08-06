@@ -6,11 +6,6 @@ const controller = require('./controller');
 
 const server = new koa();
 
-server.use(async (ctx, next) => {
-    ctx.body = 'Helle BBS Server';
-    await next();
-});
-
 server.on('error', function(error) {
     console.log('Error', error);
 });
