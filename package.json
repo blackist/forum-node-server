@@ -13,6 +13,8 @@
   "author": "LiangLiang.Dong",
   "license": "ISC",
   "dependencies": {
-    "koa": "^2.5.2"
+    "koa": "^2.5.2",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0"
   }
 }
