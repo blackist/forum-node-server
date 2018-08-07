@@ -8,8 +8,8 @@ var Sequelize = require('sequelize');
  * idle：每个线程最长等待时间
  * @type {Sequelize}
  */
-module.exports = new Sequelize('smarthome_forum', 'black', 'Black1614.', {
-    host: '120.78.202.215',
+module.exports = new Sequelize('smarthome_forum', 'root', 'root', {
+    host: '127.0.0.1',
     dialect: 'mysql',
     pool: {
         max: 20,
