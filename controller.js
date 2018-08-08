@@ -18,19 +18,19 @@ function addRouter(router, dir) {
 function addMapping(router, mapping) {
     for(var url in mapping) {
         if(url.startsWith('GET')) {
-            var path = url.substring(4);
+            var path = '/v1' + url.substring(4);
             router.get(path, mapping[url]);
             console.log('register GET ' + path);
         } else if(url.startsWith('POST')) {
-            var path = url.substring(5);
+            var path = '/v1' + url.substring(5);
             router.post(path, mapping[url]);
             console.log('register POST ' + path);
         } else if(url.startsWith('PUT')) {
-            var path = url.substring(4);
+            var path = '/v1' + url.substring(4);
             router.put(path, mapping[url]);
             console.log('register PUT ' + path);
         } else if(url.startsWith('DELETE')) {
-            var path = url.substring(7);
+            var path = '/v1' + url.substring(7);
             router.delete(path, mapping[url]);
             console.log('register DELETE ' + path);
         }

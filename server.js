@@ -12,7 +12,14 @@ server.on('error', function(error) {
 
 server.use(bodyParser());
 
+// log request.
+server.use(async (ctx, next) => {
+    // console.log(ctx);
+    await next();
+});
+
 server.use(controller());
 
-server.listen(3001);
-console.log("Server is running at 3001...");
+const port = 3008;
+server.listen(port);
+console.log("Server is running at " + port);
