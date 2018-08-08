@@ -40,7 +40,7 @@ exports.upsert = function(values, condition) {
                 return obj.update(values);
             }
             else { // insert
-                return Model.create(values);
+                return User.create(values);
             }
         });
 }
