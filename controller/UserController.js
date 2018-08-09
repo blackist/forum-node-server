@@ -1,5 +1,9 @@
 'use strict';
 
+var format = require('../util/response').format;
+const ERROR_CODE = require('../util/error-code');
+const HttpError = require('../util/error-common').HttpError;
+const CustomError = require('../util/error-common').CustomError;
 var User = require('../model/User');
 
 var user_login = async (ctx, next) => {
@@ -33,24 +37,11 @@ var user_register = async (ctx, next) => {
     email = ctx.request.body.email || '';
 
 
-    if (!username) {
-        ctx.status = 422;
-        ctx.body = { 
-            msg : "Username is Null"
-        };
-    } else if (!username) {
-        ctx.status = 422;
-        ctx.body = { 
-            msg : "Password is Null"
-        };
-    } else if(!tel) {
-        ctx.status = 422;
-        ctx.body = { 
-            msg : "Tel is Null"
-        };
+    if (!username && !tel && !email) {
+        throw new CustomError(ERROR_CODE.CUSTOM.PARAM_NULL);
     } else {
 
-        await User.upsert({
+        let result = await User.upsert({
             tel: tel,
             username: username, 
             password: password, 
@@ -64,10 +55,9 @@ var user_register = async (ctx, next) => {
             username: username
         });
 
-        ctx.status = 200;
-        ctx.body = { 
-            msg : "Register Successfully"
-        };
+        console.log(result);
+
+        ctx.body = format(ERROR_CODE.OK);
     }
 
     await next();

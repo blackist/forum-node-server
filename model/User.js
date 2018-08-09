@@ -1,5 +1,7 @@
 var Sequelize = require('sequelize');
 var sequelize = require('../db');
+const ERROR_CODE = require('../util/error-code');
+const CustomError = require('../util/error-common').CustomError;
 
 let User = sequelize.define('user', {
     id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
