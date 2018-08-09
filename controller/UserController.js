@@ -15,12 +15,9 @@ var user_login = async (ctx, next) => {
     var user = await User.findByUsernameAndPassword(username, password);
 
     if(user !== null && user.username !== undefined) {
-        ctx.response.body = user;
+        ctx.body = format(user, ERROR_CODE.OK);
     } else{
-        ctx.body = { 
-            msg : "User or Password Error"
-        };
-        ctx.status = 404;
+        ctx.body = format({}, ERROR_CODE.CUSTOM.NOT_FOUND);
     }
     await next();
 }

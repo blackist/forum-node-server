@@ -18,5 +18,7 @@ module.exports = Object.freeze({
      * CUSTOM ERROR.
      */
     1001: 'PARAM NULL',
-    1002: 'PARAM ERROR'
+    1002: 'PARAM ERROR',
+
+    1011: 'NOT FOUND'
 });

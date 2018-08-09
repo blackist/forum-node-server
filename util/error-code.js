@@ -16,6 +16,8 @@ module.exports = Object.freeze({
 
     CUSTOM: {
         PARAM_NULL: 1001,
-        PARAM_ERROR: 1002
+        PARAM_ERROR: 1002,
+
+        NOT_FOUND: 1011
     }
 });
