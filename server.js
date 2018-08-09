@@ -1,6 +1,7 @@
 'use strict';
 
 const koa = require('koa');
+const cors = require('koa2-cors');
 const bodyParser = require('koa-bodyparser');
 const controller = require('./controller');
 
@@ -13,6 +14,19 @@ const server = new koa();
 /**
  * Middle Ware.
  */
+server.use(cors({
+    origin: function (ctx) {
+        // 允许来自所有域名请求
+        return "*"; 
+        // 这样就能只允许 http://localhost:8080 这个域名的请求了
+        // return 'http://localhost:8080'; 
+    },
+    exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
+    maxAge: 5,
+    credentials: true,
+    allowMethods: ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS'],
+    allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
+}));
 server.use(bodyParser());
 
 /**
@@ -41,7 +55,7 @@ server.use((ctx, next) => {
             console.error('CATCH_ERROR', err);
         }
 
-        ctx.body = format(code, msg, {});
+        ctx.body = format({}, code, msg);
     });
 });
 

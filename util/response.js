@@ -1,8 +1,9 @@
 'use strict';
 
+const ERROR_CODE = require('../util/error-code');
 const ERROR_MSG = require('./error-msg');
 
-const format = (code, msg, data) => {
+const format = (data, code, msg) => {
 
     if(!msg) {
         if (Object.values(ERROR_CODE).indexOf(code) >= 0

@@ -55,9 +55,7 @@ var user_register = async (ctx, next) => {
             username: username
         });
 
-        console.log(result);
-
-        ctx.body = format(ERROR_CODE.OK);
+        ctx.body = format({}, ERROR_CODE.OK);
     }
 
     await next();
