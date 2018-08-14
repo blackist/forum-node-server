@@ -21,7 +21,7 @@ let User = sequelize.define('user', {
 
 let user = User.sync({force: false});
 
-exports.findByUsernameAndPassword = function(username, password) {
+exports.queryByUsernameAndPassword = function(username, password) {
     return User.findOne({
         where: {
             username: username,
@@ -30,8 +30,23 @@ exports.findByUsernameAndPassword = function(username, password) {
     });
 }
 
-exports.registerUser = function(user) {
-    User.create(user);
+exports.queryUser = function(condition) {
+    return User.findAll({
+        where: condition
+    });
+}
+
+exports.queryAllIds = function() {
+    return User.findAll({
+        where : {
+            
+        },
+        attributes: [
+            'username',
+            'tel',
+            'email'
+        ]
+    });
 }
 
 exports.upsert = function(values, condition) {

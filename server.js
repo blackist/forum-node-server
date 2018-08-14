@@ -14,6 +14,7 @@ const server = new koa();
 /**
  * Middle Ware.
  */
+// 跨域
 server.use(cors({
     origin: function (ctx) {
         // 允许来自所有域名请求
@@ -27,6 +28,12 @@ server.use(cors({
     allowMethods: ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS'],
     allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
 }));
+// 参数解析
+// server.use(bodyParser({
+//    formidable:{uploadDir: './uploads'},
+//    multipart: true,
+//    urlencoded: true
+// }));
 server.use(bodyParser());
 
 /**
@@ -64,7 +71,7 @@ server.use((ctx, next) => {
  */
 server.use(controller());
 
-server.on('ON_ERROR', function(error) {
+server.on('error', function(error) {
     console.log('Error', error);
 });
 

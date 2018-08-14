@@ -12,13 +12,32 @@ var user_login = async (ctx, next) => {
     username = ctx.request.body.username || '',
     password = ctx.request.body.password || '';
 
-    var user = await User.findByUsernameAndPassword(username, password);
+    var user = await User.queryByUsernameAndPassword(username, password);
 
     if(user !== null && user.username !== undefined) {
         ctx.body = format(user, ERROR_CODE.OK);
     } else{
         ctx.body = format({}, ERROR_CODE.CUSTOM.NOT_FOUND);
     }
+    await next();
+}
+
+var user_query = async (ctx, next) => {
+    let user = await User.queryUser({
+        id: ctx.params.id
+    });
+
+    ctx.body = format(user, ERROR_CODE.OK);
+
+    await next();
+}
+
+var user_allIds = async (ctx, next) => {
+
+    let tels = await User.queryAllIds();
+
+    ctx.body = format(tels, ERROR_CODE.OK);
+
     await next();
 }
 
@@ -58,7 +77,19 @@ var user_register = async (ctx, next) => {
     await next();
 }
 
+var user_update = async (ctx, next) => {
+    await next();
+}
+
+var user_delete = async (ctx, next) => {
+    await next();
+}
+
 module.exports = {
+    'GET /userIds': user_allIds,
+    'GET /user/:id': user_query,
+    'PUT /user/:id': user_update,
     'POST /user/login': user_login,
-    'POST /user/register': user_register
+    'POST /user/register': user_register,
+    'DELETE /user/:id': user_delete
 };
