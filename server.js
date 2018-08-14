@@ -4,10 +4,9 @@ const koa = require('koa');
 const cors = require('koa2-cors');
 const bodyParser = require('koa-bodyparser');
 const controller = require('./controller');
-
-const CustomError = require('./util/error-common').CustomError;
-const HttpError = require('./util/error-common').HttpError;
-const format = require('./util/response').format;
+const CustomError = require('./common/error/error-common').CustomError;
+const HttpError = require('./common/error/error-common').HttpError;
+const format = require('./common/util/response').format;
 
 const server = new koa();
 

@@ -1,7 +1,7 @@
 'use strict';
 
-const ERROR_CODE = require('../util/error-code');
-const ERROR_MSG = require('./error-msg');
+const ERROR_CODE = require('../error/error-code');
+const ERROR_MSG = require('../error/error-msg');
 
 const format = (data, code, msg) => {
 

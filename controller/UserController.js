@@ -1,9 +1,9 @@
 'use strict';
 
-var format = require('../util/response').format;
-const ERROR_CODE = require('../util/error-code');
-const HttpError = require('../util/error-common').HttpError;
-const CustomError = require('../util/error-common').CustomError;
+var format = require('../common/util/response').format;
+const ERROR_CODE = require('../common/error/error-common');
+const HttpError = require('../common/error/error-common').HttpError;
+const CustomError = require('../common/error/error-common').CustomError;
 var User = require('../model/User');
 
 var user_login = async (ctx, next) => {

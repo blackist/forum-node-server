@@ -9,7 +9,7 @@ function addRouter(router, dir) {
     });
 
     for(var f of js_files) {
-        console.log('controller ' + "/" + dir + "/" + f);
+        console.log('Controller: ' + "/" + dir + "/" + f);
         let mapping = require(__dirname + "/" + dir + "/" + f);
         addMapping(router, mapping);
     }
