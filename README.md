@@ -1,4 +1,4 @@
-### 论坛项目服务端
+![](http://pic.blackist.top/node-koa-restful-node_koa_logo.png)
 
 基于 Node.js+Koa 构建RESTful服务端脚手架。
 
